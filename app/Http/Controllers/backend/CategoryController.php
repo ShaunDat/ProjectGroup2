@@ -83,7 +83,7 @@ class CategoryController extends Controller
         $category ->parentid = $request->parentid;
         $category ->orders = $request->orders;
         $category ->status = $request->status;
-        $category ->update_by =1;
+        $category ->updated_by =1;
         if($category->save()){
             // link
             $link = Link::where([['tableid','=',$id],['type','=','category']])->first();

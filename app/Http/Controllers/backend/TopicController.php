@@ -83,7 +83,7 @@ class TopicController extends Controller
         $topic ->parentid = $request->parentid;
         $topic ->orders = $request->orders;
         $topic ->status = $request->status;
-        $topic ->update_by =1;
+        $topic ->updated_by =1;
         if($topic->save()){
             // link
             $link = Link::where([['tableid','=',$id],['type','=','topic']])->first();

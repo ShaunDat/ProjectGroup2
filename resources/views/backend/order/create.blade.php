@@ -1,29 +1,29 @@
 @extends('layouts.admin')
 
-@section('title','Create Post')
+@section('title','Create Product')
 
 @section('maincontent')
 <div class="main-panel">        
     <div class="content-wrapper" style="min-height: 600px">
-        <form class="forms-sample" name="form1" action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="forms-sample" name="form1" action="{{ route('product.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Create Post</h4>
+              <h4 class="card-title">Create Product</h4>
               <p class="card-description">
                 Input text
               </p>
                 <div class="form-group">
-                  <label for="title">Name list Post</label>
-                  <input type="text" name="title" value="{{ old('title') }}" class="form-control" id="title" placeholder="Title">
-                    {{-- @if ($erros->has('title'))
-                        <span class=" text-danger">{{ $erros->first('title') }}</span>
+                  <label for="name">Name list Product</label>
+                  <input type="text" name="name" value="{{ old('name') }}" class="form-control" id="name" placeholder="Name">
+                    {{-- @if ($erros->has('name'))
+                        <span class=" text-danger">{{ $erros->first('name') }}</span>
                     @endif --}}
                 </div>
                 <div class="form-group">
-                  <label for="detail">Detail Post</label>
+                  <label for="detail">Detail</label>
                   <input type="text" name="detail" value="{{ old('detail') }}" class="form-control" id="detail" placeholder="Detail">
                     {{-- @if ($erros->has('name'))
                         <span class=" text-danger">{{ $erros->first('name') }}</span>
@@ -61,11 +61,24 @@
                   Input select                  
                 </p>
                 <div class="form-group">
-                    <label for="topid">Topic</label>
-                    <select class="form-control" id="topid" name="topid">
+                  <label for="catid">List Categorys</label>
+                  <select class="form-control" id="catid" name="catid">
+                    <option value="0" >Category</option>
+                    @foreach ($list_category as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                  </select>
+                  {{-- @if ($erros->has('catid'))
+                  <span class=" text-danger">{{ $erros->first('catid') }}</span>
+                @endif  --}}
+                </div>
+
+                <div class="form-group">
+                    <label for="suppid">Orders</label>
+                    <select class="form-control" id="suppid" name="suppid">
                       <option value="0" >Orders</option>
-                      @foreach ($list_topic as $topic)
-                          <option value="{{ $topic->id }}">{{ $topic->name }}</option>
+                      @foreach ($list_supplier as $supplier)
+                          <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
                       @endforeach
                     </select>
                   {{-- @if ($erros->has('suppid'))
@@ -73,17 +86,41 @@
                 @endif  --}}
                   </div>  
                   <div class="form-group">
+                    <label for="number">Number</label>
+                    <input type="number" name="number" value="{{ old('number',1) }}" min="1" class="form-control" id="number" placeholder="Number">
+                      {{-- @if ($erros->has('number'))
+                          <span class=" text-danger">{{ $erros->first('number') }}</span>
+                      @endif --}}
+                  </div>
+
+                  <div class="form-group">
+                    <label for="price">Number</label>
+                    <input type="number" name="price" value="{{ old('price',10000) }}" min="10000" class="form-control" id="price" placeholder="Price">
+                      {{-- @if ($erros->has('price'))
+                          <span class=" text-danger">{{ $erros->first('number') }}</span>
+                      @endif --}}
+                  </div>
+
+                  <div class="form-group">
+                    <label for="pricesale">Number</label>
+                    <input type="number" name="pricesale" value="{{ old('pricesale',10000) }}" min="10000" class="form-control" id="pricesale" placeholder="Pricesale">
+                      {{-- @if ($erros->has('pricesale'))
+                          <span class=" text-danger">{{ $erros->first('pricesale') }}</span>
+                      @endif --}}
+                  </div>                
+                  
+                <div class="form-group">
                     <label for="status">Sort</label>
                     <select class="form-control" id="status" name="status">
                       <option value="1">Done update</option>
                         <option value="2">Not update</option>
                     </select>
-                </div>  
+                </div>
               </div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary mr-2">Submit[Add]</button>
-        <a href="{{ route('post.index') }}" class="btn btn-light">Back</a>
+        <a href="{{ route('product.index') }}" class="btn btn-light">Back</a>
     </form>
     <div
 </div>

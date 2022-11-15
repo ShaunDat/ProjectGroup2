@@ -1,29 +1,29 @@
 @extends('layouts.admin')
 
-@section('title','Create Post')
+@section('title','Create Page')
 
 @section('maincontent')
 <div class="main-panel">        
     <div class="content-wrapper" style="min-height: 600px">
-        <form class="forms-sample" name="form1" action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
+        <form class="forms-sample" name="form1" action="{{ route('page.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row">
         <div class="col-md-6 grid-margin stretch-card">
           <div class="card">
             <div class="card-body">
-              <h4 class="card-title">Create Post</h4>
+              <h4 class="card-title">Create Page</h4>
               <p class="card-description">
                 Input text
               </p>
                 <div class="form-group">
-                  <label for="title">Name list Post</label>
+                  <label for="title">Name list Page</label>
                   <input type="text" name="title" value="{{ old('title') }}" class="form-control" id="title" placeholder="Title">
                     {{-- @if ($erros->has('title'))
                         <span class=" text-danger">{{ $erros->first('title') }}</span>
                     @endif --}}
                 </div>
                 <div class="form-group">
-                  <label for="detail">Detail Post</label>
+                  <label for="detail">Detail Page</label>
                   <input type="text" name="detail" value="{{ old('detail') }}" class="form-control" id="detail" placeholder="Detail">
                     {{-- @if ($erros->has('name'))
                         <span class=" text-danger">{{ $erros->first('name') }}</span>
@@ -60,18 +60,6 @@
                 <p class="card-description">
                   Input select                  
                 </p>
-                <div class="form-group">
-                    <label for="topid">Topic</label>
-                    <select class="form-control" id="topid" name="topid">
-                      <option value="0" >Orders</option>
-                      @foreach ($list_topic as $topic)
-                          <option value="{{ $topic->id }}">{{ $topic->name }}</option>
-                      @endforeach
-                    </select>
-                  {{-- @if ($erros->has('suppid'))
-                  <span class=" text-danger">{{ $erros->first('suppid') }}</span>
-                @endif  --}}
-                  </div>  
                   <div class="form-group">
                     <label for="status">Sort</label>
                     <select class="form-control" id="status" name="status">
@@ -83,7 +71,7 @@
             </div>
         </div>
         <button type="submit" class="btn btn-primary mr-2">Submit[Add]</button>
-        <a href="{{ route('post.index') }}" class="btn btn-light">Back</a>
+        <a href="{{ route('page.index') }}" class="btn btn-light">Back</a>
     </form>
     <div
 </div>

@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','List Post')
+@section('title','List Order')
 
 @section('header')
     <link rel="stylesheet" href="{{ asset('template/jquery.dataTables.min.css') }}">
@@ -10,10 +10,9 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">List Post</h4>
+        <h4 class="card-title">List Order</h4>
         <p class="card-description">
-          Add Post <a href="{{ route('post.create') }}" class="btn btn-success btn-rounded btn-fw">Add</a>
-          Trash Post <a href="{{ route('post-trash') }}" class="btn btn-danger btn-rounded btn-fw">Trash</a>
+          Trash Order <a href="{{ route('order-trash') }}" class="btn btn-danger btn-rounded btn-fw">Trash</a>
         </p>
         <div class="table-responsive">
           @includeIf('backend.message')
@@ -21,9 +20,9 @@
             <thead>
               <tr>
                 <th>#</th>
-                <th>Image</th>
-                <th>Name Post</th>
-                <th>Topic</th>
+                <th>Full Name</th>
+                <th>Email</th>
+                <th>Phone number </th>
                 <th>Date created</th>
                 <th>Function</th>
                 <th>ID</th>
@@ -35,28 +34,30 @@
                 <td>
                     <input type="checkbox" name="checkboxid" id="" value=""></td>
                 <td>
-                    <img src="{{ asset('images/posts/'. $row->img) }}" class="img-fluid" alt="Image"></td>
+                    {{ $row->name }}</td>
                 <td>
-                    {{ $row->title }}</td>
+                    {{ $row->name }}</td>
                 <td>
-                    {{ $row->topname }}</td>
+                    {{ $row->catname }}</td>
+                <td>
+                    {{ $row->suppname }}</td>
                 <td>
                     {{ $row->created_at }}</td>
                 <td>
                   @if ($row->status==1)
-                    <a href="{{ route('post.status',['id'=>$row->id]) }}" 
+                    <a href="{{ route('order.status',['id'=>$row->id]) }}" 
                       class="btn btn-sm btn-success"><i class="fas fa-toggle-on"></i></a>
                   @else
-                  <a href="{{ route('post.status',['id'=>$row->id]) }}"
+                  <a href="{{ route('order.status',['id'=>$row->id]) }}"
                      class="btn btn-sm btn-danger"><i class="fas fa-toggle-off"></i></a>
 
                   @endif
 
-                  <a href="{{ route('post.show',['post'=>$row->id]) }}" 
+                  <a href="{{ route('order.show',['order'=>$row->id]) }}" 
                     class="btn btn-sm btn-success"><i class="fas fa-eye"></i></a>
-                  <a href="{{ route('post.edit',['post'=>$row->id]) }}" 
+                  <a href="{{ route('order.edit',['order'=>$row->id]) }}" 
                     class="btn btn-sm btn-info"><i class="fas fa-edit"></i></a>
-                  <a href="{{ route('post.deltrash',['id'=>$row->id]) }}" 
+                  <a href="{{ route('order.deltrash',['id'=>$row->id]) }}" 
                     class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></a>
                 </td>
                 <td>

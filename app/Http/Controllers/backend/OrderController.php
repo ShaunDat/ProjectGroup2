@@ -4,6 +4,7 @@ namespace App\Http\Controllers\backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Order;
 
 class OrderController extends Controller
 {
@@ -14,7 +15,12 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+        $list = Order::
+        join('orderdetails', 'orderdetails.orderid', '=', 'orders.id')
+        ->join('users', 'users.id', '=', 'orders.userid')
+        ->orderby('orders.created_at', 'desc')
+        ->get();
+        return view('backend.order.index',compact('list'));
     }
 
     /**

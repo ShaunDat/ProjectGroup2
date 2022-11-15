@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('orderdetails', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('userid');
+            $table->unsignedTinyInteger('orderid');
             $table->unsignedTinyInteger('productid');
+            $table->integer('number');
             $table->float('price');
             $table->float('amount');
             $table->timestamps();

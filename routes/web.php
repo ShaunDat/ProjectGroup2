@@ -9,6 +9,7 @@ use App\Http\Controllers\backend\TopicController;
 use App\Http\Controllers\backend\SupplierController;
 use App\Http\Controllers\backend\PostController;
 use App\Http\Controllers\backend\PageController;
+use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\ProductController;
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,13 @@ Route::prefix('admin')->group(function(){
     Route::get('page/{id}/status',[PageController::class, 'status'])->name('page.status'); 
     Route::get('page/{id}/deltrash',[PageController::class, 'deltrash'])->name('page.deltrash'); 
     Route::get('page/{id}/retrash',[PageController::class, 'retrash'])->name('page.retrash'); 
+
+    // Order
+    Route::resource('order', OrderController::class);
+    Route::get('order-trash',[OrderController::class, 'trash'])->name('order-trash'); 
+    Route::get('order/{id}/status',[OrderController::class, 'status'])->name('order.status'); 
+    Route::get('order/{id}/deltrash',[OrderController::class, 'deltrash'])->name('order.deltrash'); 
+    Route::get('order/{id}/retrash',[OrderController::class, 'retrash'])->name('order.retrash'); 
 
 
 

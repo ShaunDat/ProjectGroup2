@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Link;
 use App\Models\Menu;
+use App\Models\Topic;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
 use Illuminate\Support\Str;
@@ -18,7 +19,7 @@ class PostController extends Controller
      * */ 
     public function index(){
         $list = Post::where('posts.status','!=',0)
-        ->join('topics', 'topics.id', '=', 'posts.topicid')
+        ->join('topics', 'topics.id', '=', 'posts.topid')
         ->orderby('posts.created_at', 'desc')
         ->select("posts.id","posts.img","posts.title","posts.created_at","posts.status","topics.name as topname")
         ->get();
@@ -39,18 +40,15 @@ class PostController extends Controller
      * */ 
     public function store(StorePostRequest $request){
         $post = new Post();
-        $post ->name = $request->name;
-        $slug = Str::slug($request->name,'-');
+        $post ->title = $request->title;
+        $slug = Str::slug($request->title,'-');
         $post ->slug = $slug;
         $post ->detail = $request->detail;
         $post ->metadesc = $request->metadesc;
         $post ->metakey = $request->metakey;
         $post ->topid = $request->topid;
-        $post ->suppid = $request->suppid;
         $post ->status = $request->status;
-        $post ->price = $request->price;
-        $post ->pricesale = $request->pricesale;
-        $post ->number = $request->number;
+        $post ->posttype = 'post';
         $post ->created_by =1;
             // Upload file
         if($request->hasFile('img')){
@@ -91,18 +89,15 @@ class PostController extends Controller
      * */ 
     public function update(UpdatePostRequest $request, $id){
         $post = Post::find($id);
-        $post ->name = $request->name;
-        $slug = Str::slug($request->name,'-');
+        $post ->title = $request->title;
+        $slug = Str::slug($request->title,'-');
         $post ->slug = $slug;
         $post ->detail = $request->detail;
         $post ->metadesc = $request->metadesc;
         $post ->metakey = $request->metakey;
         $post ->topid = $request->topid;
-        $post ->suppid = $request->suppid;
         $post ->status = $request->status;
-        $post ->price = $request->price;
-        $post ->pricesale = $request->pricesale;
-        $post ->number = $request->number;
+        $post ->posttype = 'post';
         $post ->updated_by =1;
             // Upload file
         if($request->hasFile('img')){
@@ -133,9 +128,9 @@ class PostController extends Controller
      * */ 
     public function trash(){
         $list = post::where('posts.status','=',0)
-        ->join('topics', 'topics.id', '=', 'posts.topicid')
+        ->join('topics', 'topics.id', '=', 'posts.topid')
         ->orderby('posts.created_at', 'desc')
-        ->select("posts.id","posts.img","posts.name","posts.created_at","posts.status","topics.name as topname")
+        ->select("posts.id","posts.img","posts.title","posts.created_at","posts.status","topics.name as topname")
         ->get();
         return view('backend.post.trash',compact('list'));
     }

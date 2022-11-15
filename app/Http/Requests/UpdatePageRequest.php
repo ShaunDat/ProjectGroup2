@@ -27,19 +27,26 @@ class UpdatePageRequest extends FormRequest
         return [
             'name' => [
                 'required',
-                Rule::unique('pages','name')->ignore($this->page),
+                Rule::unique('posts','title')->ignore($this->post),
             ],
+            'detail'=>'required',
             'metakey'=>'required',
+            'metadesc'=>'required',
             'metadesc'=>'required',
         ];
     }
     public function messages(){
         return[
-            'name.required' => 'list zero',
-            'name.unique' => 'list zero',
-            'name.name' => 'list zero',
+
+            'title.required' => 'list zero',
+            'title.unique' => 'list zero',
+            'title.name' => 'list zero',
             'metakey.required' => 'list zero',
             'metadesc.required' => 'list zero',
+            'detail'=>'required',
+            'img.mimes' => 'image does not exist',
+            'img.mimes' => 'the image is out of size, max size 2048',
+
 
         ];
     }

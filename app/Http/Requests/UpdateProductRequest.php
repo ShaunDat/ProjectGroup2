@@ -29,17 +29,27 @@ class UpdateProductRequest extends FormRequest
                 'required',
                 Rule::unique('products','name')->ignore($this->product),
             ],
+            'detail'=>'required',
             'metakey'=>'required',
             'metadesc'=>'required',
+            'metadesc'=>'required',
+            'catid' => 'required',
+            'suppid' => 'required'
         ];
     }
     public function messages(){
         return[
+
             'name.required' => 'list zero',
             'name.unique' => 'list zero',
             'name.name' => 'list zero',
             'metakey.required' => 'list zero',
             'metadesc.required' => 'list zero',
+            'catid' => 'required',
+            'detail'=>'required',
+            'suppid.required' => 'list zero',
+            'img.mimes' => 'image does not exist',
+            'img.mimes' => 'the image is out of size, max size 2048',
 
         ];
     }

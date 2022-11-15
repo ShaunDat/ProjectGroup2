@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedTinyInteger('topicid')->nullable();
+            $table->unsignedTinyInteger('topid')->nullable();
             $table->string('title');
-            $table->longText('content');
+            $table->string('slug');
+            $table->string('detail');
             $table->string('img');
             $table->string('posttype')->default('post');
             $table->string('metakey');

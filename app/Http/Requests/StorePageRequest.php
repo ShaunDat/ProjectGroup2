@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePageRequest extends FormRequest
+class StorePostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +25,10 @@ class StorePageRequest extends FormRequest
     {
         return [
 
-            'name' => 'required|unique:pages|min:2',
+            'title' => 'required|unique:posts',
+            'detail' => 'required',
+            'topid' => 'required',
+            'img' => 'mimes:jpg,bmp,png,gif|max:2048',
             'metakey' => 'required',
             'metadesc' => 'required',
     
@@ -39,6 +42,9 @@ class StorePageRequest extends FormRequest
             'name.name' => 'list zero',
             'metakey.required' => 'list zero',
             'metadesc.required' => 'list zero',
+            'topid.required'=> 'list zero',
+            'img.mimes' => 'image does not exist',
+            'img.mimes' => 'the image is out of size, max size 2048',
 
         ];
     }

@@ -1,7 +1,7 @@
 
 @extends('layouts.admin')
 
-@section('title','List Trash Post')
+@section('title','List Trash Page')
 
 @section('header')
     <link rel="stylesheet" href="{{ asset('template/jquery.dataTables.min.css') }}">
@@ -11,9 +11,9 @@
 <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">List Trash Post</h4>
+        <h4 class="card-title">List Trash Page</h4>
         <p class="card-description">
-          <a href="{{ route('post.index') }}" class="btn btn-light">Back</a>
+          <a href="{{ route('page.index') }}" class="btn btn-light">Back</a>
         </p>
         <div class="table-responsive">
           @includeIf('backend.message')
@@ -40,10 +40,10 @@
                 <td>
                     {{ $row->created_at }}</td>
                 <td class="text-center">
-                  <form action="{{ route('post.destroy',['post'=>$row->id]) }}" method="POST">
+                  <form action="{{ route('page.destroy',['page'=>$row->id]) }}" method="POST">
                     @csrf
                     @method('DELETE')
-                  <a href="{{ route('post.retrash',['id'=>$row->id]) }}" 
+                  <a href="{{ route('page.retrash',['id'=>$row->id]) }}" 
                     class="btn btn-sm btn-info">
                     <i class="fas fa-undo-alt"></i></a>
                   <button type="submit" class="btn btn-sm btn-danger">
