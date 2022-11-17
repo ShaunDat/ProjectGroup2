@@ -75,7 +75,7 @@
                       <tr>
                         <th scope="row">6</th>
                         <td>img</td>
-                        <td>{{ $product->img }}</td>
+                        <td><img src="{{ asset('images/products/'. $product->img) }}" class="img-fluid" alt="Image"></td>
                       </tr>
                       <tr>
                         <th scope="row">7</th>

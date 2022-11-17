@@ -10,6 +10,7 @@ use App\Http\Controllers\backend\SupplierController;
 use App\Http\Controllers\backend\PostController;
 use App\Http\Controllers\backend\PageController;
 use App\Http\Controllers\backend\OrderController;
+use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\backend\ProductController;
 /*
 |--------------------------------------------------------------------------
@@ -79,6 +80,13 @@ Route::prefix('admin')->group(function(){
     Route::get('order/{id}/status',[OrderController::class, 'status'])->name('order.status'); 
     Route::get('order/{id}/deltrash',[OrderController::class, 'deltrash'])->name('order.deltrash'); 
     Route::get('order/{id}/retrash',[OrderController::class, 'retrash'])->name('order.retrash'); 
+
+    // Customer
+    Route::resource('customer', CustomerController::class);
+    Route::get('customer-trash',[CustomerController::class, 'trash'])->name('customer-trash'); 
+    Route::get('customer/{id}/status',[CustomerController::class, 'status'])->name('customer.status'); 
+    Route::get('customer/{id}/deltrash',[CustomerController::class, 'deltrash'])->name('customer.deltrash'); 
+    Route::get('customer/{id}/retrash',[CustomerController::class, 'retrash'])->name('customer.retrash'); 
 
 
 

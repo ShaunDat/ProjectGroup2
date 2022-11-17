@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class UpdateProductRequest extends FormRequest
+class UpdateUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,9 +27,15 @@ class UpdateProductRequest extends FormRequest
         return [
             'name' => [
                 'required',
-                Rule::unique('products','name')->ignore($this->product),
+                Rule::unique('users','name')->ignore($this->user),
             ],
-            'detail'=>'required',
+            'email'    => 'required|email',
+            'password' => [
+                'required',
+                'min:6',
+                'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
+                'confirmed'
+            ]
         ];
     }
     public function messages(){
@@ -38,8 +44,15 @@ class UpdateProductRequest extends FormRequest
             'name.required' => 'list zero',
             'name.unique' => 'list zero',
             'name.name' => 'list zero',
-            'metakey.required' => 'list zero',
-            'metadesc.required' => 'list zero',
+            'name.required' => 'list zero',
+            'name.unique' => 'list zero',
+            'name.name' => 'list zero',
+            'email.name' => 'list email',
+            'password.required' => 'list zero',
+            'password.min' => 'Input <6',
+            'password.regex' => 'Input error',
+            'password.confirmed' => 'list zero',
+
         ];
     }
 }

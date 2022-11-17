@@ -94,7 +94,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="price">Number</label>
+                    <label for="price">Price</label>
                     <input type="number" name="price" value="{{ old('price',10000) }}" min="10000" class="form-control" id="price" placeholder="Price">
                       {{-- @if ($erros->has('price'))
                           <span class=" text-danger">{{ $erros->first('number') }}</span>
@@ -102,7 +102,7 @@
                   </div>
 
                   <div class="form-group">
-                    <label for="pricesale">Number</label>
+                    <label for="pricesale">Pricesale</label>
                     <input type="number" name="pricesale" value="{{ old('pricesale',10000) }}" min="10000" class="form-control" id="pricesale" placeholder="Pricesale">
                       {{-- @if ($erros->has('pricesale'))
                           <span class=" text-danger">{{ $erros->first('pricesale') }}</span>

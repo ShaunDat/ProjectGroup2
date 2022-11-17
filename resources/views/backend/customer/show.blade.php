@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title','Detail list Order')
+@section('title','Detail list Customer')
 
 @section('maincontent')
 <div class="main-panel">
@@ -10,7 +10,7 @@
           <div class="row">
             <div class="col-12 col-xl-8 mb-4 mb-xl-0">
               <h6 class="font-weight-normal mb-0">All systems are running smoothly! You have <span class="text-primary">3 unread alerts!</span></h6>
-              <a href="{{ route('order.index') }}" class="btn btn-light">Back</a>
+              <a href="{{ route('customer.index') }}" class="btn btn-light">Back</a>
             </div>
             <div class="col-12 col-xl-4">
              <div class="justify-content-end d-flex">
@@ -38,90 +38,69 @@
                       <tr>
                         <th scope="row">1</th>
                         <td>ID</td>
-                        <td>{{ $order->id }}</td>
+                        <td>{{ $customer->id }}</td>
                       </tr>
                       <tr>
                         <th scope="row">2</th>
                         <td>Name</td>
-                        <td>{{ $order->name }}</td>
+                        <td>{{ $customer->name }}</td>
                       </tr>
                       <tr>
                         <th scope="row">3</th>
-                        <td>Category</td>
-                        <td>
-                          @foreach ($list_category as $category)
-                          @if ($category->id == $order->catid)
-                            <p value="{{ $category->id }}">{{ $category->name }}</p>
-                          @endif
-                        @endforeach
-                        </td>
+                        <td>Email</td>
+                        <td>{{ $customer->email }}</td>
                       </tr>
                       <tr>
                         <th scope="row">4</th>
-                        <td>Supplier</td>
-                        <td>
-                          @foreach ($list_supplier as $supplier)
-                          @if ($supplier->id == $order->suppid)
-                          <p value="{{ $supplier->id }}">{{ $supplier->name }}</p>
-                          @endif
-                          @endforeach
-                        </td>
+                        <td>Full name</td>
+                        <td>{{ $customer->fullname }}</td>
                       </tr>
                       <tr>
                         <th scope="row">5</th>
-                        <td>Slug</td>
-                        <td>{{ $order->slug }}</td>
+                        <td>Phone</td>
+                        <td>{{ $customer->phone }}</td>
                       </tr>
                       <tr>
                         <th scope="row">6</th>
-                        <td>img</td>
-                        <td>{{ $order->img }}</td>
+                        <td>Address</td>
+                        <td>{{ $customer->gender }}</td>
                       </tr>
                       <tr>
                         <th scope="row">7</th>
-                        <td>Price</td>
-                        <td>{{ $order->price }}</td>
+                        <td>Gender</td>
+                        {{-- <td>{{ $customer->gender }}</td> --}}
+                        <td>
+                          @if ($customer-> gender==3)
+                              <p>Private</p>
+                          @else
+                            @if ($customer-> gender==1)
+                                <p>Male</p>
+                            @else
+                                <p>Private</p>
+                            @endif  
+                          @endif
+                        </td>
                       </tr>
                       <tr>
                         <th scope="row">8</th>
-                        <td>Pricesale</td>
-                        <td>{{ $order->pricesale }}</td>
+                        <td>Jurisdiction</td>
+                        <td>{{ $customer->roles }}</td>
                       </tr>
                       <tr>
                         <th scope="row">9</th>
-                        <td>Number</td>
-                        <td>{{ $order->number }}</td>
+                        <td>Created By</td>
+                        <td>{{ $customer->created_by }}</td>
                       </tr>
                       <tr>
                         <th scope="row">10</th>
-                        <td>Detail</td>
-                        <td>{{ $order->detail }}</td>
+                        <td>Update By</td>
+                        <td>{{ $customer->updated_by }}</td>
                       </tr>
                       <tr>
                         <th scope="row">11</th>
-                        <td>Metakey</td>
-                        <td>{{ $order->metakey }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">12</th>
-                        <td>Metadesc</td>
-                        <td>{{ $order->metadesc }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">13</th>
-                        <td>Created By</td>
-                        <td>{{ $order->created_by }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">14</th>
-                        <td>Update By</td>
-                        <td>{{ $order->updated_by }}</td>
-                      </tr>
-                      <tr>
-                        <th scope="row">15</th>
                         <td>Status</td>
                         <td>
-                          @if ($order-> status == 1)
+                          @if ($customer-> status == 1)
                             <p>Done update</p> 
                           @else
                             <p>Not update</p>
@@ -129,14 +108,14 @@
                         </td>
                       </tr>
                       <tr>
-                        <th scope="row">16</th>
+                        <th scope="row">12</th>
                         <td>Created At</td>
-                        <td>{{ $order->created_at }}</td>
+                        <td>{{ $customer->created_at }}</td>
                       </tr>
                       <tr>
-                        <th scope="row">17</th>
+                        <th scope="row">13</th>
                         <td>Update At</td>
-                        <td>{{ $order->updated_at }}</td>
+                        <td>{{ $customer->updated_at }}</td>
                       </tr>
                     </tbody>
                   </table>

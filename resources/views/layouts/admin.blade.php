@@ -416,6 +416,22 @@
             </div>
           </li>
 
+          {{-- Customer --}}
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="collapse" href="#page-nav" aria-expanded="false" aria-controls="page-nav">
+              <i class="icon-layout menu-icon"></i>
+              <span class="menu-title">Customers</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="page-nav">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"> <a class="nav-link" href="{{ route('customer.index') }}">List Customer</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('customer.create') }}">Create Customer</a></li>
+                <li class="nav-item"> <a class="nav-link" href="{{ route('customer-trash') }}">Trash Customer</a></li>
+              </ul>
+            </div>
+          </li>
+
         </ul>
       </nav>
       <!-- partial -->
